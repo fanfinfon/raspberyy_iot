@@ -1,10 +1,10 @@
 import time, json, paho.mqtt.client as mqtt
-import dht11_sensor, database_handler, telemetry
+import dht11_sensor, database, telemetry
 
 BROKER = "172.20.10.3"
 TOPIC  = "sensor/data"
 
-database_handler.init_db()
+database.init_db()
 client = mqtt.Client("pi_zero_client")
 client.connect(BROKER)
 
@@ -14,7 +14,7 @@ while True:
 
     if data:
         # Save both sensor + telemetry locally
-        ts = database_handler.save_reading(
+        ts = database.save_reading(
             data["temperature"],
             data["humidity"],
             telemetry_data["cpu_temp"],

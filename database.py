@@ -1,7 +1,7 @@
 import sqlite3
 from datetime import datetime
 
-DB_FILE = "sensor_data.db"
+DB_FILE = "pi_data.db"
 
 def init_db():
     """Create table if it doesn't exist."""
